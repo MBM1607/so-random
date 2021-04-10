@@ -1,0 +1,64 @@
+#top-bar {
+	background-color: antiquewhite;
+	border-bottom: 2px solid gray;
+	height: 5rem;
+	padding: 2rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#text-container {
+	width: 100%;
+	max-width: 85ch;
+	margin: 1em auto;
+	background-color: indianred;
+	color: snow;
+	border-radius: 1rem;
+	padding: 1em 1.25em;
+	font-size: 1.25rem;
+	font-family: 'Raleway', sans-serif;
+}
+
+select, input {
+	cursor: pointer;
+	border: 2px solid gray;
+	padding: 0.5em;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	border-radius: 1rem;
+	background-color: snow;
+	outline: none;
+	appearance: none;
+	box-shadow: none;
+	width: 25ch;
+	margin: 0 0.35em;
+}
+
+.btn {
+	cursor: pointer;
+	border-radius: 1rem;
+	border: none;
+	outline: none;
+	background-color: tomato;
+	color: snow;
+	padding: 1em;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+	margin: 0 0.35em;
+}
+
+.btn:hover {
+	background-color: brown;
+}
+
+p, ul {
+	margin: 0.3em 0;
+}
+
+#generate-btn {
+}
+
+#copy-btn {
+}
