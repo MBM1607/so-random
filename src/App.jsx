@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 
 import './App.css';
@@ -8,7 +8,8 @@ const App = () => {
 	const [type, setType] = useState(0);
 	const [number, setNumber] = useState(4);
 	const [text, setText] = useState('');
-	const lorem = new LoremIpsum({
+	const [lorem, _] = useState(new LoremIpsum({
+		format: 'html',
 		sentencesPerParagraph: {
 			max: 8,
 			min: 4
@@ -17,9 +18,9 @@ const App = () => {
 			max: 16,
 			min: 4
 		}
-	});
+	}));
 
-	const generate = () => {
+	const generate = useCallback(() => {
 		if (type === 0) {
 			setText(lorem.generateParagraphs(number));
 		}
@@ -32,7 +33,7 @@ const App = () => {
 		else if (type === 3) {
 			setText(lorem.generateSentences(number));
 		}
-	}
+	}, [type, number, lorem]);
 
 	const changeNumber = (e) => {
 		setNumber(parseInt(e.target.value));
@@ -43,8 +44,12 @@ const App = () => {
 	};
 
 	useEffect(() => {
-		setText(lorem.generateParagraphs(number));
-	}, []);
+
+	});
+
+	useEffect(() => {
+		generate();
+	}, [number, generate]);
 
 	return (
 		<>
@@ -65,8 +70,12 @@ const App = () => {
 				<button id='copy-btn' className='btn'>Copy</button>
 			</header>
 
-			<main id='text-container'>
-				{text}
+			<main>
+				{
+					text.split('\n').map((line, index) => {
+						return <p key={index} className='paragraph'>{line}</p>
+					})
+				}
 			</main>
 		</>
 	);
