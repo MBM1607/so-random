@@ -1,0 +1,15 @@
+.alert {
+	position: absolute;
+	width: 80%;
+	text-align: center;
+	z-index: 100;
+	padding: 1rem;
+	background-color: hsl(123, 63%, 22%);
+	color: hsl(230, 4%, 100%);
+	left: 50%;
+	transform: translateX(-50%);
+	top: 5rem;
+	border-radius: 1rem;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 900;
+}

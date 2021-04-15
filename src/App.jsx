@@ -1,12 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 
+import Alert from './Alert';
 import './App.css';
 
 const App = () => {
-	const types = ['paragraph', 'sentence', 'word', 'list'];
+	const types = ['paragraph', 'sentence', 'word'];
+
+	const [alertText, setAlertText] = useState('');
+	const [isAlert, setIsAlert] = useState(false);
+
 	const [type, setType] = useState(0);
 	const [number, setNumber] = useState(4);
+
 	const [text, setText] = useState('');
 	const [lorem, _] = useState(new LoremIpsum({
 		format: 'html',
@@ -20,6 +26,14 @@ const App = () => {
 		}
 	}));
 
+
+	const copyToClipboard = () => {
+		navigator.clipboard.writeText(text);
+		setTimeout(() => setIsAlert(false), 1000);
+		setAlertText('Copied to Clipboard');
+		setIsAlert(true);
+	};
+
 	const generate = useCallback(() => {
 		if (type === 0) {
 			setText(lorem.generateParagraphs(number));
@@ -30,9 +44,6 @@ const App = () => {
 		else if (type === 2) {
 			setText(lorem.generateWords(number));
 		}
-		else if (type === 3) {
-			setText(lorem.generateSentences(number));
-		}
 	}, [type, number, lorem]);
 
 	const changeNumber = (e) => {
@@ -42,10 +53,6 @@ const App = () => {
 	const changeType = (e) => {
 		setType(parseInt(e.target.value));
 	};
-
-	useEffect(() => {
-
-	});
 
 	useEffect(() => {
 		generate();
@@ -65,18 +72,20 @@ const App = () => {
 							})
 						}
 					</select>
+					<button id='options-btn' className='btn'>Options</button>
 					<button id='generate-btn' className='btn' onClick={generate}>Generate!</button>
 				</div>
-				<button id='copy-btn' className='btn'>Copy</button>
+				<button id='copy-btn' className='btn' onClick={copyToClipboard}>Copy</button>
 			</header>
 
-			<main>
+			<main className='text-container'>
 				{
 					text.split('\n').map((line, index) => {
 						return <p key={index} className='paragraph'>{line}</p>
 					})
 				}
 			</main>
+			<Alert text={alertText} isVisible={isAlert} />
 		</>
 	);
 };

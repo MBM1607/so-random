@@ -9,24 +9,27 @@
 	justify-content: space-between;
 }
 
-.paragraph {
-	width: 100%;
-	max-width: 85ch;
-	margin: 1em auto;
+.text-container {
 	background-color: hsl(237, 63%, 22%);
 	color: hsl(237, 63%, 100%);
+	width: clamp(25ch, 50%, 80ch);
+	margin: 1em auto;
 	border-radius: 1rem;
-	padding: 1em 1.25em;
+	padding: 1rem 1.25rem;
 	font-size: 1.25rem;
 	font-family: 'Raleway', sans-serif;
 	box-shadow: 0 8px 12px 0 hsl(237, 63%, 22%);
+}
+
+.paragraph {
+	margin: 0.625em 0;
 }
 
 
 select, input {
 	cursor: pointer;
 	border: 2px solid hsl(237, 63%, 22%);
-	padding: 0.5em;
+	padding: 0.725em 0.5em;
 	font-size: 1rem;
 	line-height: 1.5rem;
 	border-radius: 1rem;
@@ -47,16 +50,13 @@ select, input {
 	background-color: hsl(237, 63%, 22%);
 	color: hsl(237, 63%, 100%);
 	border: 2px solid hsl(237, 63%, 100%);
-	padding: 0.5em 1em;
+	padding: 0.725rem;
 	font-size: 1rem;
 	transition: all 0.3s ease;
 	margin: 0 0.35em;
 }
 
 .btn:hover {
-	background-color: hsl(234, 63%, 10%);
-}
-
-p, ul {
-	margin: 0.3em 0;
+	background-color: hsl(237, 63%, 100%);
+	color: hsl(237, 63%, 22%);
 }
