@@ -4,6 +4,20 @@ import { LoremIpsum } from 'lorem-ipsum';
 import Alert from './Alert';
 import './App.css';
 
+const lorem = new LoremIpsum(
+	{
+		format: 'html',
+		sentencesPerParagraph: {
+			max: 8,
+			min: 4
+		},
+		wordsPerSentence: {
+			max: 16,
+			min: 4
+		}
+	}
+);
+
 const App = () => {
 	const types = ['paragraph', 'sentence', 'word'];
 
@@ -14,17 +28,6 @@ const App = () => {
 	const [number, setNumber] = useState(4);
 
 	const [text, setText] = useState('');
-	const [lorem, _] = useState(new LoremIpsum({
-		format: 'html',
-		sentencesPerParagraph: {
-			max: 8,
-			min: 4
-		},
-		wordsPerSentence: {
-			max: 16,
-			min: 4
-		}
-	}));
 
 
 	const copyToClipboard = () => {
@@ -44,7 +47,7 @@ const App = () => {
 		else if (type === 2) {
 			setText(lorem.generateWords(number));
 		}
-	}, [type, number, lorem]);
+	}, [type, number]);
 
 	const changeNumber = (e) => {
 		setNumber(parseInt(e.target.value));
