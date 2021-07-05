@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Neuton:wght@400;700&family=Raleway:wght@400;500&display=swap');
 
+:root {
+	--color-light-white: #fff;
+	--color-light-ruby: #ff4d61;
+	--color-light-blue: #376df6;
+	--color-light-teal: #00dbbe;
+	--color-light-yellow: #ffdc42;
+	--color-light-purple: #8749f3;
+	--color-light-green: #11b62c;
+	--color-light-navy: #292a3d;
+	--color-light-grey: #eeeef2;
+	--color-light-grey-alpha-50: rgba(238,238,242,0.5);
+	--color-dark-white: #8f909e;
+	--color-dark-ruby: #bc2047;
+	--color-dark-blue: #2850af;
+	--color-dark-teal: #00b2b3;
+	--color-dark-yellow: #fd8208;
+	--color-dark-purple: #6b1cb0;
+	--color-dark-green: #06891c;
+	--color-dark-navy: #0a0a0f;
+	--color-dark-grey: #8f909e;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -7,7 +29,7 @@
 }
 
 body {
-	background-color: (237, 63%, 100%);
+	background-color: var(--color-light-yellow);
 	color: (237, 63%, 22%);
 }
 

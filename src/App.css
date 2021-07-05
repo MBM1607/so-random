@@ -1,6 +1,6 @@
 #top-bar {
-	background-color: hsl(237, 63%, 22%);
-	border-bottom: 2px solid hsl(237, 63%, 22%);
+	background-color: var(--color-dark-ruby);
+	border-bottom: 2px solid var(--color-light-navy);
 	height: 5rem;
 	padding: 2rem;
 	display: flex;
@@ -10,30 +10,38 @@
 }
 
 .text-container {
-	background-color: hsl(237, 63%, 22%);
-	color: hsl(237, 63%, 100%);
+	background-color: var(--color-light-white);
+	border: 2px solid var(--color-light-navy);
+	color: var(--color-dark-navy);
 	width: clamp(25ch, 50%, 80ch);
 	margin: 1em auto;
 	border-radius: 1rem;
-	padding: 1rem 1.25rem;
+	padding: 1rem 1rem;
 	font-size: 1.25rem;
 	font-family: 'Raleway', sans-serif;
-	box-shadow: 0 8px 12px 0 hsl(237, 63%, 22%);
 }
 
 .paragraph {
 	margin: 0.625em 0;
 }
 
+.paragraph:first-child {
+	margin-top: 0;
+}
+
+.paragraph:last-child {
+	margin-bottom: 0;
+}
+
 
 select, input {
 	cursor: pointer;
-	border: 2px solid hsl(237, 63%, 22%);
+	border: 2px solid var(--color-light-navy);
 	padding: 0.725em 0.5em;
 	font-size: 1rem;
 	line-height: 1.5rem;
 	border-radius: 1rem;
-	background-color: hsl(237, 63%, 100%);
+	background-color: var(--color-light-white);
 	outline: none;
 	appearance: none;
 	box-shadow: none;
@@ -47,9 +55,9 @@ select, input {
 	border-radius: 1rem;
 	border: none;
 	outline: none;
-	background-color: hsl(237, 63%, 22%);
-	color: hsl(237, 63%, 100%);
-	border: 2px solid hsl(237, 63%, 100%);
+	background-color: var(--color-light-navy);
+	color: var(--color-light-white);
+	border: 2px solid var(--color-light-white);
 	padding: 0.725rem;
 	font-size: 1rem;
 	transition: all 0.3s ease;
@@ -57,6 +65,6 @@ select, input {
 }
 
 .btn:hover {
-	background-color: hsl(237, 63%, 100%);
-	color: hsl(237, 63%, 22%);
+	background-color: var(--color-light-white);
+	color: var(--color-dark-navy);
 }
