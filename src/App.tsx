@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 
-import Alert from './Alert';
+import Options from './components/Options';
+import Alert from './components/Alert';
+
 import './App.css';
+
 
 const lorem = new LoremIpsum(
 	{
-		format: 'html',
 		sentencesPerParagraph: {
 			max: 8,
 			min: 4
@@ -26,6 +28,9 @@ const App = () => {
 
 	const [type, setType] = useState(0);
 	const [number, setNumber] = useState(4);
+
+	const [isOptionsOpen, setIsOptionsOpen] = useState(false)
+	const toggleOptions = () => setIsOptionsOpen(prev => !prev);
 
 	const [text, setText] = useState('');
 
@@ -49,12 +54,8 @@ const App = () => {
 		}
 	}, [type, number]);
 
-	const changeNumber = (e) => {
-		setNumber(parseInt(e.target.value));
-	};
-
-	const changeType = (e) => {
-		setType(parseInt(e.target.value));
+	const changeType = (type: number) => {
+		setType(type);
 	};
 
 	useEffect(() => {
@@ -65,8 +66,20 @@ const App = () => {
 		<>
 			<header id='top-bar'>
 				<div>
-					<input type='number' name='number' id='number' min='1' value={number} onChange={changeNumber} />
-					<select name='generate-options' id='generate-options' value={type} onChange={changeType} >
+					<input
+						type='number'
+						name='number'
+						id='number'
+						min='1'
+						value={number}
+						onChange={e => setNumber(parseInt(e.target.value))}
+					/>
+					<select
+						name='generate-options'
+						id='generate-options'
+						value={type}
+						onChange={e => changeType(parseInt(e.target.value))}
+					>
 						{
 							types.map((type, index) => {
 								return (
@@ -75,7 +88,13 @@ const App = () => {
 							})
 						}
 					</select>
-					<button id='options-btn' className='btn'>Options</button>
+					<button
+						id='options-btn'
+						className='btn'
+						onClick={toggleOptions}
+					>
+						Options
+					</button>
 					<button id='generate-btn' className='btn' onClick={generate}>Generate!</button>
 				</div>
 				<button id='copy-btn' className='btn' onClick={copyToClipboard}>Copy</button>
@@ -88,7 +107,10 @@ const App = () => {
 					})
 				}
 			</main>
-			<Alert text={alertText} isVisible={isAlert} />
+			{ isAlert && <Alert text={alertText} /> }
+			<Options
+				isOpen={isOptionsOpen}
+			/>
 		</>
 	);
 };
