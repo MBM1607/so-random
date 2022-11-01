@@ -6,17 +6,16 @@ import Alert from './components/Alert';
 
 import './App.css';
 
-
 const lorem = new LoremIpsum(
 	{
 		sentencesPerParagraph: {
 			max: 8,
-			min: 4
+			min: 4,
 		},
 		wordsPerSentence: {
 			max: 16,
-			min: 4
-		}
+			min: 4,
+		},
 	}
 );
 
@@ -29,11 +28,10 @@ const App = () => {
 	const [type, setType] = useState(0);
 	const [number, setNumber] = useState(4);
 
-	const [isOptionsOpen, setIsOptionsOpen] = useState(false)
+	const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 	const toggleOptions = () => setIsOptionsOpen(prev => !prev);
 
 	const [text, setText] = useState('');
-
 
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(text);
@@ -84,7 +82,7 @@ const App = () => {
 							types.map((type, index) => {
 								return (
 									<option key={index} value={index}>{type}</option>
-								)
+								);
 							})
 						}
 					</select>
@@ -103,7 +101,7 @@ const App = () => {
 			<main className='text-container'>
 				{
 					text.split('\n').map((line, index) => {
-						return <p key={index} className='paragraph'>{line}</p>
+						return <p key={index} className='paragraph'>{line}</p>;
 					})
 				}
 			</main>

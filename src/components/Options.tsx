@@ -11,11 +11,11 @@ const Options = ({ isOpen }: OptionsProps) => {
 		>
 			This is just an example
 		</ReactModal>
-	)
-}
+	);
+};
 
 interface OptionsProps {
-	isOpen: boolean
+	isOpen: boolean,
 }
 
 export default Options;
